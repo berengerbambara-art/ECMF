@@ -15,17 +15,67 @@
 <section class="section" id="apropos"><div class="container about"><div><h2>À propos d'ECMF</h2><p class="lead">ECMF, Entreprise Compaoré Mohamed & Frères, est une entreprise commerciale située à Kamsonghin, à Ouagadougou, au Burkina Faso.</p><p>Nous proposons des accessoires automobiles ainsi que d'autres articles selon les disponibilités. Notre objectif est de répondre aux besoins des clients grâce à un accueil professionnel, des renseignements clairs et des conseils adaptés.</p></div><div class="about-card"><h3>Nos engagements</h3><ul><li>Un accueil attentif et professionnel</li><li>Des informations sur les articles disponibles</li><li>Des conseils pour choisir vos accessoires</li><li>Une prise de contact rapide sur WhatsApp</li></ul></div></div></section>
 <section class="section soft" id="contact"><div class="container"><h2>Contactez ECMF</h2><p class="lead">Une question sur un produit ? Écrivez-nous directement.</p><div class="contact-box"><div>📍 <strong>Kamsonghin, Ouagadougou, Burkina Faso</strong></div><div class="contact-actions"><a class="btn btn-green" href="https://wa.me/22678807181" target="_blank" rel="noopener noreferrer">WhatsApp : 78 80 71 81</a><a class="btn btn-green" href="https://wa.me/22675682088" target="_blank" rel="noopener noreferrer">WhatsApp : 75 68 20 88</a></div></div></div></section></main>
 <footer><div class="container"><strong>ECMF — Entreprise Compaoré Mohamed & Frères</strong><p>Qualité • Service • Confiance</p><small>© <span id="year"></span> ECMF. Tous droits réservés.</small></div></footer>
-<script>
-// PERSONNALISATION : remplacez chaque valeur price: "" par exemple par price: "5 000".
-// Pour afficher une vraie photo, placez un fichier image à côté de index.html puis indiquez essuie- glace: "nom-photo.jpg".
-const products=[
-{name:"Essuie-glaces",description:"Pour différents modèles de véhicules.",emoji:"🌧️",price:"",imagesrc="8ed67f86d9844caaada548a9e561a4d9.jpg"},
-{name:"Phares et ampoules LED",description:"Éclairage et accessoires lumineux.",emoji:"💡",price:"",image src="4cd407c83bfd4180a4ef48efc03c4cfa.jpg"},
-{name:"Tapis de voiture",description:"Protection et entretien de l'intérieur.",emoji:"🚗",price:"",image src="4387fae734144659b71b10ab42079ebb.jpg"},
-{name:"Housses de sièges",description:"Confort et protection des sièges.",emoji:"💺",price:"",image src="f80e9e520db84341a47224717a232533.jpg"},
-{name:"Rétroviseurs",description:"Accessoires extérieurs de image.",emoji:"🪞",price:"",image src=side-rear-view-mirror-modern-car.jpg"},
-{name:"Autres accessoires",description:"Divers équipements et articles automobiles.",emoji:"🧰",price:"",image src="IMG_20260904_105019.jpg"}
-];
-const numbers=["22678807181","22675682088"];
-const 
 
+<script>
+const products = [
+  {
+    name: "Essuie-glaces",
+    description: "Pour différents modèles de véhicules.",
+    imageSrc: "8ed67f86d9844caaada548a9e561a4d9.jpg"
+  },
+  {
+    name: "Phares et ampoules LED",
+    description: "Éclairage et accessoires lumineux.",
+    imageSrc: "4cd407c83bfd4180a4ef48efc03c4cfa.jpg"
+  },
+  {
+    name: "Tapis de voiture",
+    description: "Protection de l'intérieur.",
+    imageSrc: "4387fae734144659b71b10ab42079ebb.jpg"
+  },
+  {
+    name: "Housses de sièges",
+    description: "Confort et protection des sièges.",
+    imageSrc: "f80e9e520db84341a47224717a232533.jpg"
+  },
+  {
+    name: "Rétroviseurs",
+    description: "Accessoires pour votre véhicule.",
+    imageSrc: "side-rear-view-mirror-modern-car.jpg"
+  },
+  {
+    name: "Autres accessoires",
+    description: "Divers équipements automobiles.",
+    imageSrc: "IMG_20260904_105019.jpg"
+  }
+];
+
+const grid = document.getElementById("product-grid");
+
+grid.innerHTML = products.map(product => `
+  <article class="product">
+    <div class="visual" style="height:200px;padding:10px;background:#f1f7f3">
+      <img
+        src="./${product.imageSrc}"
+        alt="${product.name}"
+        style="width:100%;height:100%;object-fit:contain"
+        loading="lazy"
+        onerror="this.alt='Photo indisponible';this.style.display='none';this.parentElement.insertAdjacentText('beforeend','Photo indisponible')"
+      >
+    </div>
+    <div class="product-body">
+      <h3>${product.name}</h3>
+      <p>${product.description}</p>
+      <p class="price">Prix sur demande</p>
+      <div class="order">
+        <a href="https://wa.me/22678807181" target="_blank" rel="noopener noreferrer">
+          Demander le prix sur WhatsApp
+        </a>
+      </div>
+    </div>
+  </article>
+`).join("");
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
