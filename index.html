@@ -43,3 +43,101 @@ products.forEach((p)=>{
 document.getElementById("year").textContent=new Date().getFullYear();
 </script>
 </body></html>
+
+
+<style>
+.catalogue {
+  padding: 25px 15px;
+  background: #f5f7f5;
+}
+.catalogue h2 {
+  text-align: center;
+  color: #16733a;
+}
+.produits {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+.produit {
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px #0002;
+}
+.produit img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+}
+.produit h3 {
+  font-size: 16px;
+}
+.prix {
+  color: #16733a;
+  font-weight: bold;
+}
+.commander {
+  display: inline-block;
+  background: #168c45;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+@media (min-width: 768px) {
+  .produits {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+</style>
+
+<section class="catalogue" id="catalogue">
+  <h2>Nos accessoires automobiles</h2>
+  <div class="produits" id="produits"></div>
+</section>
+
+<script>
+const articles = [
+  ["Essuie-glaces", "essuie-glaces.jpg"],
+  ["Phares et ampoules LED", "phares-led.jpg"],
+  ["Tapis de voiture", "tapis.jpg"],
+  ["Housses de sièges", "housses.jpg"],
+  ["Rétroviseurs", "retroviseurs.jpg"],
+  ["Autres accessoires", "accessoires.jpg"]
+];
+
+const numero = "22670298885";
+const catalogue = document.getElementById("produits");
+
+articles.forEach(([nom, photo]) => {
+  const carte = document.createElement("article");
+  carte.className = "produit";
+
+  const image = document.createElement("img");
+  image.src = "images/" + photo;
+  image.alt = nom;
+  image.loading = "lazy";
+
+  const titre = document.createElement("h3");
+  titre.textContent = nom;
+
+  const prix = document.createElement("p");
+  prix.className = "prix";
+  prix.textContent = "Prix sur demande";
+
+  const bouton = document.createElement("a");
+  bouton.className = "commander";
+  bouton.textContent = "Commander sur WhatsApp";
+  bouton.href = "https://wa.me/" + numero
+    + "?text=" + encodeURIComponent(
+      "Bonjour ECMF, je souhaite commander : " + nom
+    );
+  bouton.target = "_blank";
+  bouton.rel = "noopener noreferrer";
+
+  carte.append(image, titre, prix, bouton);
+  catalogue.appendChild(carte);
+});
+</script>
